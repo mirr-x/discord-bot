@@ -1,7 +1,7 @@
 import discord
 import os
 import requests
-# from keep_alive import keep_alive
+from keep_alive import keep_alive
 
 # Your API key for the jokes service
 headers = {"Accept": "application/json"}
@@ -36,6 +36,6 @@ async def on_message(message):
         except requests.RequestException as e:
             await message.channel.send('Error fetching joke.')
 
-# keep_alive()
+keep_alive()
 # Run the bot with the token
 client.run(os.environ['TOKEN'])
