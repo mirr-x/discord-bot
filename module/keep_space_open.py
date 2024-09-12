@@ -19,7 +19,7 @@ class KeepSpaceOpen:
 
         # ? Load cookies from the JSON file
         
-        cookies = json.load(os.environ['GITHUB_COOKIE'])
+        cookies = os.environ['GITHUB_COOKIE']
         for cookie in cookies:
             if 'sameSite' in cookie and cookie['sameSite'] not in ["Strict", "Lax", "None"]:
                 del cookie['sameSite']
