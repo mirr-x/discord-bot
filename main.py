@@ -53,6 +53,25 @@ async def delete(interaction: discord.Interaction, number: int):
     await interaction.followup.send(f"Deleted {len(deleted)} messages.", ephemeral=True)
 
 
+@tree.command(name="ssh", description="Creates an SSH server")
+async def ssh(interaction: discord.Interaction):
+    try:
+        from module import KeepSpaceOpen
+        from selenium import webdriver
+        from selenium.webdriver.firefox.options import Options
+
+        options = Options()
+        options.add_argument("--headless")
+        browser = webdriver.Firefox(options=options)
+        GitBot = KeepSpaceOpen(browser)
+        GitBot.login_github_with_cookies()
+        GitBot.open_codeSpace()
+
+        await interaction.response.send_message('SSH server setup initiated.')
+    except Exception as e:
+        await interaction.response.send_message(f'Error setting up SSH server: {str(e)}')
+
+
 keep_alive()
 # Run the bot with the token
 bot.run(os.environ['TOKEN'])
