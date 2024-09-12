@@ -4,7 +4,7 @@
 import time
 import json
 from selenium.webdriver.common.by import By
-from discordPrinte import PrinteDiscord
+from module.discordPrinte import PrinteDiscord
 import os
 
 
