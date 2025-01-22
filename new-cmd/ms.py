@@ -44,17 +44,17 @@ async def check_url_status(channel):
             response.raise_for_status()  # Raise an exception for HTTP errors
             important_info = extract_important_info(response.text)
             await send_to_discord(important_info, channel)
-            PrinteDiscord(f'```diff\n+ Working OK {response.status_code}✅ \n```')
+            PrinteDiscordcopy(f'```diff\n+ Working OK {response.status_code}✅ \n```')
             # print(colored(f"Working OK {response.status_code}", "green"))
             break  # Exit the loop if the request was successful
         except ConnectionError as e:
-            PrinteDiscord(f'```diff\n- Connection error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
+            PrinteDiscordcopy(f'```diff\n- Connection error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
             # print(colored(f"Connection error: {e}. Retrying in {retry_delay} seconds...", "red"))
         except Timeout as e:
-            PrinteDiscord(f'```diff\n- Timeout error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
+            PrinteDiscordcopy(f'```diff\n- Timeout error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
             # print(colored(f"Timeout error: {e}. Retrying in {retry_delay} seconds...", "red"))
         except RequestException as e:
-            PrinteDiscord(f'```diff\n- Request error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
+            PrinteDiscordcopy(f'```diff\n- Request error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
             # print(colored(f"Request error: {e}. Retrying in {retry_delay} seconds...", "red"))
         await asyncio.sleep(retry_delay)
     else:
