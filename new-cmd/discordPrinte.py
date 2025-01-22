@@ -5,7 +5,7 @@ import os
 class PrinteDiscordcopy:
     def __init__(self, data):
         self.data = {"content": data}  # Ensure data is in the correct format
-        self.url = 'https://discord.com/api/webhooks/1330874159772860507/zt759H8wUIhbk_YsrgjDc3FSBm-ZDDi3z0Pj3g3etRPXt99nJEZoyxdVafi_OzYfEHdZ'
+        self.url = 
         self.send()
 
     def send(self):
