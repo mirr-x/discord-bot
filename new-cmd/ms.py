@@ -25,15 +25,15 @@ def extract_important_info(html_content):
     for row in rows:
         cells = row.find_all('td')
         subject = cells[0].text.strip()
-        grades = [cell.text.strip() for cell in cells[1:]]
-        important_info.append((subject, grades))
+        gbr = [cell.text.strip() for cell in cells[1:]]
+        important_info.append((subject, gbr))
     return important_info
 
 
 async def send_to_discord(info, channel):
     message = "Important Information:\n"
-    for subject, grades in info:
-        message += f"**{subject}**: {', '.join(grades)}\n"
+    for subject, gbr in info:
+        message += f"**{subject}**: {', '.join(gbr)}\n"
     await channel.send(message)
 
 
@@ -45,17 +45,17 @@ async def check_url_status(channel):
             important_info = extract_important_info(response.text)
             await send_to_discord(important_info, channel)
             PrinteDiscord(f'```diff\n+ Working OK {response.status_code}✅ \n```')
-            print(colored(f"Working OK {response.status_code}", "green"))
+            # print(colored(f"Working OK {response.status_code}", "green"))
             break  # Exit the loop if the request was successful
         except ConnectionError as e:
             PrinteDiscord(f'```diff\n- Connection error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
-            print(colored(f"Connection error: {e}. Retrying in {retry_delay} seconds...", "red"))
+            # print(colored(f"Connection error: {e}. Retrying in {retry_delay} seconds...", "red"))
         except Timeout as e:
             PrinteDiscord(f'```diff\n- Timeout error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
-            print(colored(f"Timeout error: {e}. Retrying in {retry_delay} seconds...", "red"))
+            # print(colored(f"Timeout error: {e}. Retrying in {retry_delay} seconds...", "red"))
         except RequestException as e:
             PrinteDiscord(f'```diff\n- Request error: {e}. Retrying in {retry_delay} seconds...❌ \n```')
-            print(colored(f"Request error: {e}. Retrying in {retry_delay} seconds...", "red"))
+            # print(colored(f"Request error: {e}. Retrying in {retry_delay} seconds...", "red"))
         await asyncio.sleep(retry_delay)
     else:
         await channel.send("Failed to connect after several attempts.")
