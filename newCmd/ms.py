@@ -2,7 +2,7 @@ import asyncio
 import requests
 from bs4 import BeautifulSoup
 import time
-from discordPrinte import PrinteDiscordcopy
+from newCmd.discordPrinte import PrinteDiscordcopy
 import os
 
 import requests
