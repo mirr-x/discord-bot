@@ -5,7 +5,7 @@ import os
 class PrinteDiscordcopy:
     def __init__(self, data):
         self.data = {"content": data}  # Ensure data is in the correct format
-        self.url = 
+        self.url = os.environ['URL']
         self.send()
 
     def send(self):
