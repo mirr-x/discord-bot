@@ -1,5 +1,6 @@
 import discord
 import os
+from bs4 import BeautifulSoup
 import requests
 from discord.ext import commands
 from keep_alive import keep_alive

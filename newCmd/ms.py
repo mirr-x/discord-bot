@@ -2,7 +2,6 @@ import asyncio
 import requests
 from bs4 import BeautifulSoup
 import time
-from termcolor import colored
 from discordPrinte import PrinteDiscordcopy
 import os
 
