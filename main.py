@@ -71,6 +71,14 @@ async def ssh(interaction: discord.Interaction):
     except Exception as e:
         await interaction.response.send_message(f'Error setting up SSH server: {str(e)}')
 
+@tree.command(name="ms", description="Check Result")
+async def ms(interaction: discord.Interaction):
+    await interaction.response.defer()  # Acknowledge the interaction
+    from sm import main as sm_main
+    await sm_main(interaction.channel)
+    await interaction.followup.send("Check completed.")
+
+
 
 keep_alive()
 # Run the bot with the token
