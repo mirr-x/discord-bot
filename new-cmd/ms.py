@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from termcolor import colored
-from discordPrinte import PrinteDiscord
+from discordPrinte import PrinteDiscordcopy
 import os
 
 import requests
